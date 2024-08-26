@@ -1,0 +1,11 @@
+.main-layout {
+  .ant-layout-header {
+    color: #1d2939;
+    background-color: #ffffff;
+    border: 1px solid #eaecf0;
+    padding: 16px 24px;
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+}
