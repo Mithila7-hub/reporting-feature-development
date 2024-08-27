@@ -1,24 +1,76 @@
-import { Card, Button, Form, Input, Space } from "antd";
+import { Form, Input, DatePicker, Modal } from "antd";
+// import { ButtonComp } from "./ButtonComp";
+import { Dayjs } from "dayjs";
 
-export const FormComp = () => {
+interface FormCompProps {
+  reportTitle: string;
+  onFormSubmit: (values: { name: string; period: Array<string> }) => void;
+  open: boolean;
+  onFormCancel: () => void;
+  onFormOk: () => void;
+}
+
+const { RangePicker } = DatePicker;
+
+export const FormComp: React.FC<FormCompProps> = ({
+  reportTitle,
+  onFormSubmit,
+  open,
+  onFormCancel,
+  onFormOk,
+}) => {
+  const [form] = Form.useForm();
+
+  const handleOk = () => {
+    form.submit();
+    onFormOk();
+  };
+
+  const onFinish = (values: {
+    name: string;
+    period: [Dayjs, Dayjs] | null;
+  }) => {
+    const formattedValues = {
+      ...values,
+      period: values.period
+        ? values.period.map((date) => date.format("DD/MM/YYYY"))
+        : [],
+    };
+    // console.log(formattedValues, "formattedValues");
+    onFormSubmit(formattedValues);
+  };
+
+  const handleCancel = () => {
+    onFormCancel();
+  };
+
   return (
-    <Card title="Afval rapport aanmaken" className="card-popup">
-      <Form layout="vertical">
-        <Form.Item label="Field A" className="">
-          <Input placeholder="input placeholder" />
+    <Modal
+      title={`${reportTitle} aanmaken`}
+      className="modal-popup"
+      open={open}
+      okButtonProps={{ className: "primary-btn", htmlType: "submit" }}
+      okText={"Genereer"}
+      cancelText={"Sluiten"}
+      onCancel={handleCancel}
+      onOk={handleOk}
+    >
+      <Form form={form} layout="vertical" onFinish={onFinish}>
+        <Form.Item
+          label="Naam"
+          name="name"
+          rules={[{ required: true, message: "Please input some text" }]}
+        >
+          <Input placeholder="Naam" />
         </Form.Item>
-        <Form.Item label="Field B">
-          <Input placeholder="input placeholder" />
-        </Form.Item>
-        <Form.Item>
-          <div style={{ textAlign: "right" }}>
-            <Space>
-              <Button type="default">Sluiten</Button>
-              <Button type="primary">Genereer</Button>
-            </Space>
-          </div>
+        <Form.Item
+          label="Periode"
+          name="period"
+          rules={[{ required: true, message: "Please input period" }]}
+        >
+          <RangePicker style={{ width: "100%" }} />
         </Form.Item>
       </Form>
-    </Card>
+    </Modal>
   );
 };

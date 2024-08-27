@@ -1,0 +1,16 @@
+.primary-btn {
+  background-color: #152bee;
+  color: #ffffff;
+}
+
+.secondary-btn {
+  color: #152bee;
+  background-color: #ffffff;
+}
+
+.link-btn {
+  padding: 12px 24px;
+  justify-content: flex-start;
+  color: #152bee;
+  background-color: #ffffff;
+}

@@ -1,0 +1,10 @@
+.report-information {
+  background-color: #cbe1fd;
+  .ant-card-head {
+    padding: 16px;
+  }
+
+  .ant-card-body {
+    padding: 16px;
+  }
+}

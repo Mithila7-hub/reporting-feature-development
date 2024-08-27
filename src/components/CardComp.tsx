@@ -1,7 +1,8 @@
 import { ArrowRightOutlined, ReadOutlined } from "@ant-design/icons";
-import { Card, Button } from "antd";
+import { Card } from "antd";
 import { CardDataProps } from "../CardData";
 import "./CardComp.css";
+import { ButtonComp } from "./ButtonComp";
 
 const { Meta } = Card;
 
@@ -19,14 +20,13 @@ export const CardComp: React.FC<CardProps> = ({ card, onButtonClick }) => {
         description={card.description}
         className="custom-meta"
       />
-      <Button
-        type="primary"
+      <ButtonComp
         icon={<ArrowRightOutlined />}
         iconPosition="end"
         onClick={onButtonClick}
-      >
-        Aanmaken
-      </Button>
+        buttonText="Aanmaken"
+        className="primary-btn"
+      />
     </Card>
   );
 };

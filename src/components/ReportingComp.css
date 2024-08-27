@@ -1,0 +1,23 @@
+.reporting-space {
+  .ant-space-item {
+    width: 100%;
+  }
+
+  /* .ant-card-head,
+  .ant-card-body {
+    width: 68%;
+  } */
+
+  .reporting-title-link-container {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      color: #1677ff;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}

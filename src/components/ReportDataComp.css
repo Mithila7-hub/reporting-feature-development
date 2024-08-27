@@ -1,0 +1,21 @@
+.report-data {
+  .ant-card-head {
+    border: none;
+    width: 71%;
+    padding-top: 24px;
+
+    .ant-card-head-title {
+      font-size: 20px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+  }
+
+  .ant-card-body {
+    padding-top: 16px;
+    width: 71%;
+    font-size: 14px;
+    line-height: 1.57;
+    font-weight: 500;
+  }
+}

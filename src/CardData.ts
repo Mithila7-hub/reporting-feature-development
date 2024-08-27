@@ -11,7 +11,7 @@ export interface CardDataProps {
   icon: ReactNode;
 }
 
-export const cardData: CardDataProps[] = [
+export const cardData = [
   {
     title: "Afval rapport",
     description:
